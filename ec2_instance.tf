@@ -15,7 +15,7 @@ resource "aws_instance" "demo-server" {
       "sudo systemctl enable docker.service",
       "sudo chown jenkins:jenkins /var/run/docker.sock",
       "sudo 644 /var/run/docker.sock",
-      "sudo systemctl restart docker.service"
+      "sudo systemctl restart docker.service",
       "sudo wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64",
       "sudo chmod +x /home/ubuntu/minikube-linux-amd64",
       "sudo cp minikube-linux-amd64 /usr/local/bin/minikube",
