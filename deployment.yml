@@ -21,4 +21,3 @@ spec:
         image: annapoornakaradi/health-care:latest
         ports:
         - containerPort: 8080
-
