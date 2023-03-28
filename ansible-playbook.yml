@@ -3,18 +3,6 @@
   become: true
   connection : ssh
   tasks :
-  - name: Copy file with owner and permissions
-    copy:
-      src: /home/ubuntu/deployment.yml
-      dest: /home/ubuntu/deployment.yml
-      owner: ubuntu
-      
-  - name: Copy file with owner and permissions
-    copy:
-      src: /home/ubuntu/service.yml
-      dest: /home/ubuntu/service.yml
-      owner: ubuntu
-    
   - name: create new deployment
     command : kubectl create -f /home/ubuntu/deployment.yml
 
