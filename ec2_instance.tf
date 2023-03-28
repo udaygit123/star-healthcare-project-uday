@@ -12,10 +12,10 @@ resource "aws_instance" "demo-server" {
     inline = [
       "sudo apt update -y",
       "sudo apt install docker.io -y",
-      "sudo systemctl enable docker",
+      "sudo systemctl enable docker.service",
       "sudo chown jenkins:jenkins /var/run/docker.sock",
-      "sudo 644 /var/run/docker.sock"
-      "sudo systemctl restart docker"
+      "sudo 644 /var/run/docker.sock",
+      "sudo systemctl restart docker.service"
       "sudo wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64",
       "sudo chmod +x /home/ubuntu/minikube-linux-amd64",
       "sudo cp minikube-linux-amd64 /usr/local/bin/minikube",
@@ -24,7 +24,7 @@ resource "aws_instance" "demo-server" {
       "sudo cp kubectl /usr/local/bin/kubectl",
       "sudo groupadd docker",
       "sudo usermod -aG docker ubuntu",
-      "sudo systemctl restart docker"
+      "sudo systemctl restart docker.service"
     ]
     connection {
       type        = "ssh"
