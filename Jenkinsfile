@@ -68,13 +68,24 @@ pipeline {
 			sleep 10
 			}
 		}
-		
+		stage('Approve - Deployment to Kubernetes Cluster'){
+            steps{
+                
+                //----------------send an approval prompt-----------
+                script {
+                   env.APPROVED_DEPLOY = input message: 'User input required Choose "yes" | "Abort"'
+                       }
+                //-----------------end approval prompt------------
+            }
+        }
 
-		stage('Deploy to kubernetes cluster'){
-		steps{
-		ansiblePlaybook credentialsId: 'kubernetescred', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-playbook.yml'
+		stage('Deploy to Kubernetes Cluster') {
+            steps {
+		script {
+		sshPublisher(publishers: [sshPublisherDesc(configName: 'kubernetes-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f deployment.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '/', sourceFiles: '*.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 		}
-		}
+            }
+	}
 
 	}
 }
