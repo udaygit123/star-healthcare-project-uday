@@ -70,9 +70,10 @@ pipeline {
 		}
 		
 		stage('copy files to kubernetes server'){
-		steps{
-		 	sh 'ssh ubuntu@172.31.18.143'
-			sh 'scp /var/lib/jenkins/workspace/Project3_Healthcare-pipeline/* ubuntu@172.31.18.143/home/ubuntu/'
+		sshagent(['kubernetescred']) {
+    		// some block
+			sh 'ssh -O StrictHostKeyChecking=no ubuntu@172.31.18.143'
+			sh 'scp /var/lib/jenkins/workspace/Project3_Healthcare-pipeline/* ubuntu@172.31.18.143:/home/ubuntu/'
 			}
 		}
 
