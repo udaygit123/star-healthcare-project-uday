@@ -1,4 +1,4 @@
-- name : Configure Docker on EC2 Instances
+- name : deploy on kubernetes server
   hosts : [kube-server]
   become: true
   connection : ssh
