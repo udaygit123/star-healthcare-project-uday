@@ -68,6 +68,12 @@ pipeline {
 			sleep 10
 			}
 		}
+		stage('Terraform destroy'){
+		steps{
+			sh 'terraform destroy -auto-approve'
+			sleep 10
+			}
+		}
 		
 	}
 }
