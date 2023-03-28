@@ -65,7 +65,7 @@ pipeline {
 		stage('Terraform apply'){
 		steps{
 			sh 'terraform apply -auto-approve'
-			sleep 30
+			sleep 10
 			}
 		}
 		stage('Deploy to kubernetes cluster'){
