@@ -70,7 +70,7 @@ pipeline {
 		}
 		stage('Deploy to kubernetes cluster'){
 		steps{
-		ansiblePlaybook credentialsId: 'kubernetescred', disableHostKeyChecking: true, installation: 'ansible', inventory: 'etc/ansible/hosts', playbook: 'ansible-playbook.yml'
+		ansiblePlaybook credentialsId: 'kubernetescred', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-playbook.yml'
 		}
 		}
 
