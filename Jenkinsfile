@@ -13,7 +13,7 @@ pipeline {
 
 		stage("Pull the Project from GitHub"){
 		steps{
-			git 'https://github.com/AnnapoornaKaradi/banking-finance.git'
+			git 'https://github.com/AnnapoornaKaradi/health-care.git'
 		     }
 		  }
 
@@ -65,13 +65,7 @@ pipeline {
 		stage('Terraform apply'){
 		steps{
 			sh 'terraform apply -auto-approve'
-			sleep 10
-			}
-		}
-		stage('Terraform destroy'){
-		steps{
-			sh 'terraform destroy -auto-approve'
-			sleep 10
+			sleep 30
 			}
 		}
 		
