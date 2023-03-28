@@ -68,6 +68,14 @@ pipeline {
 			sleep 10
 			}
 		}
+		
+		stage('copy files to kubernetes server'){
+		steps{
+		 	sh 'ssh ubuntu@172.31.18.143'
+			sh 'scp /var/lib/jenkins/workspace/Project3_Healthcare-pipeline/* ubuntu@172.31.18.143/home/ubuntu/'
+			}
+		}
+
 		stage('Deploy to kubernetes cluster'){
 		steps{
 		ansiblePlaybook credentialsId: 'kubernetescred', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-playbook.yml'
