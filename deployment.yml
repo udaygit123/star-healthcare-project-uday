@@ -1,17 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: HealthCareApp
+  name: app-deployment
   labels:
-    apps: HealthCareApp
+    app: healthcare
 spec:
-  replicas: 3
   selector:
     matchLabels:
-      app: HealthCareApp
+      app: healthcare
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: healthcare
     spec:
       containers:
-      - name: HealthCareApp
-          image: annapoornakaradi/health-care:latest
-          ports:
-          - containerPort: 8080
+      - name: healthcare
+        image: annapoornakaradi/health-care:latest
+        ports:
+        - containerPort: 8080
+
