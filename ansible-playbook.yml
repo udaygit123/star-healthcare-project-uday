@@ -1,7 +1,7 @@
 - name : deploy on kubernetes server
-  hosts : [kube-server]
+  hosts : all
   become: true
-  connection : ssh
+  #connection : ssh
   tasks :
   - name: create new deployment
     command : kubectl create -f /home/ubuntu/deployment.yml
