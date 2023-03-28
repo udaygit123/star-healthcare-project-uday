@@ -32,13 +32,13 @@ pipeline {
 		stage('Containerize the application'){
 		steps{
 			echo 'Creating a docker image'
-			sh 'docker build -t annapoornakaradi/banking_finance .'
+			sh 'docker build -t annapoornakaradi/health-care .'
 		    }
 		} 
 		stage('Pushing the image to dockerhub'){
 		steps{
 			 withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-			 sh 'docker push annapoornakaradi/banking_finance'
+			 sh 'docker push annapoornakaradi/health-care'
 
              }
 	    } 
