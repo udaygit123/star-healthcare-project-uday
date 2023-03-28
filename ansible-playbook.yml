@@ -2,10 +2,17 @@
   hosts : [kube-server]
   become: true
   connection : ssh
-  tasks : 
+  tasks :
+  - name: Copying deployment file to kubernete server
+    command: cp /var/lib/jenkins/workspace/Project3_Healthcare-pipeline/deployment.yml /home/ubuntu/
+
+  - name: copy service file
+    command: cp /var/lib/jenkins/workspace/Project3_Healthcare-pipeline/service.yml /home/ubuntu/
+
+
   - name: create new deployment
-    command : kubectl create -f deployment/yml
+    command : kubectl create -f /home/ubuntu/deployment/yml
 
   - name : create a service
-    command : kubectl create -f service.yml
+    command : kubectl create -f /home/ubuntu/service.yml
  
