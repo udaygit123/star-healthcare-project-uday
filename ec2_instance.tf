@@ -1,4 +1,4 @@
-resource "aws_instance" "Test-Server" {
+resource "aws_instance" "demo-server" {
   ami                    = "ami-007855ac798b5175e"
   instance_type          = "t2.medium"
   availability_zone      = "us-east-1a"
@@ -24,7 +24,7 @@ resource "aws_instance" "Test-Server" {
       type        = "ssh"
       host        = self.public_ip
       user        = "ubuntu"
-      private_key = file("./KeyPair.pem")
+      private_key = file("KeyPair.pem")
     }
   }
 }
