@@ -69,14 +69,6 @@ pipeline {
 			}
 		}
 		
-		stage('copy files to kubernetes server'){
-			steps{
-		sshagent(['kubernetescred']) {
-			sh 'ssh -O StrictHostKeyChecking=no ubuntu@172.31.18.143'
-			sh 'scp /var/lib/jenkins/workspace/Project3_Healthcare-pipeline/* ubuntu@172.31.18.143:/home/ubuntu/'
-			}
-			}
-		}
 
 		stage('Deploy to kubernetes cluster'){
 		steps{
