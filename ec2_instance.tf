@@ -3,7 +3,7 @@ resource "aws_instance" "demo-server" {
   instance_type          = "t2.medium"
   availability_zone      = "us-east-1a"
   vpc_security_group_ids = [aws_security_group.my_sg.id]
-  key_name               = "KeyPair.pem"
+  key_name               = "KeyPair"
   tags = {
     name = "kubernetes_instance"
   }
