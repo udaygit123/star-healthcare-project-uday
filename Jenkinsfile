@@ -13,7 +13,7 @@ pipeline {
 
 		stage("Pull the Project from GitHub"){
 		steps{
-			git 'https://github.com/AnnapoornaKaradi/banking-finance.git'
+			git 'https://github.com/AnnapoornaKaradi/health-care.git'
 		     }
 		  }
 
