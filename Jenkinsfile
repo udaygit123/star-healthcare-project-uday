@@ -68,24 +68,22 @@ pipeline {
 			sleep 10
 			}
 		}
-		stage('Approve - Deployment to Kubernetes Cluster'){
-            steps{
-                
-                //----------------send an approval prompt-----------
-                script {
-                   env.APPROVED_DEPLOY = input message: 'User input required Choose "yes" | "Abort"'
-                       }
-                //-----------------end approval prompt------------
-            }
-        }
-
-		stage('Deploy to Kubernetes Cluster') {
-            steps {
-		script {
-		sshPublisher(publishers: [sshPublisherDesc(configName: 'kubernetescred', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f deployment.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '/', sourceFiles: '*.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+		stage('deploy to kubernetes'){
+		steps{
+		sshagent(['K8s']) {
+		sh 'scp -o StrictHostKeyChecking=no deployment.yml ubuntu@172.31.18.143:/home/ubuntu'
+			script{
+				try{
+					sh 'ssh ubuntu@172.31.18.143 kubectl apply -f .'
+				}catch(error)
+				{
+					sh 'ssh ubuntu@172.31.18.143 kubectl create -f .'
+				}
+			}
 		}
-            }
-	}
+		}
+		}
+		}
 
 	}
 }
