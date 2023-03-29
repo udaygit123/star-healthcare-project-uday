@@ -4,8 +4,8 @@
   #connection : ssh
   tasks :
   - name: create new deployment
-    command : kubectl apply -f /home/ubuntu/deployment.yml
+    command : kubectl apply -f deployment.yml
 
   - name : create a service
-    command : kubectl apply -f /home/ubuntu/service.yml
+    command : kubectl apply -f service.yml
  
