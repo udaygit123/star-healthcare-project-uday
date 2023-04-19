@@ -1,5 +1,5 @@
-resource "aws_security_group" "my_sg" {
-  name = "my_sg"
+resource "aws_security_group" "my_sg1" {
+  name = "my_sg1"
 
   ingress {
     description = "enable port 22"
