@@ -1,9 +1,9 @@
-resource "aws_instance" "Test-Server" {
-  ami                    = "ami-007855ac798b5175e"
+resource "aws_instance" "Test-Server2" {
+  ami                    = "ami-0e58f89e91723af4c"
   instance_type          = "t2.medium"
-  availability_zone      = "us-east-1a"
-  vpc_security_group_ids = [aws_security_group.my_sg.id]
-  key_name               = "KeyPair.pem"
+  availability_zone      = "us-east-1"
+  vpc_security_group_ids = [aws_security_group.my_sg1.id]
+  key_name               = "JenkinSerP1key.pem"
   tags = {
     name = "kubernetes_instance"
   }
@@ -24,7 +24,7 @@ resource "aws_instance" "Test-Server" {
       type        = "ssh"
       host        = self.public_ip
       user        = "ubuntu"
-      private_key = file("./KeyPair.pem")
+      private_key = file("./JenkinSerP1key.pem")
     }
   }
 }
