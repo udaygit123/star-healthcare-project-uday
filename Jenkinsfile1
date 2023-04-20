@@ -43,7 +43,7 @@ pipeline {
             steps {
                 dir('terraform_setup'){
                 sh 'sudo chmod 600 JenkinSerP1key.pem'
-                sh 'terraform init'
+                sh 'terraform init -upgrade'
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
 		
