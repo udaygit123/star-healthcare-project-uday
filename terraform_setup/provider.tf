@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "aws"
-      verson  = "1.4.5"
-    }
-  }
-}
-
 provider "aws" {
   region = "us-east-1"
   access_key= "AKIAZEM74KA4DWVKAUEI"
