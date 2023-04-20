@@ -3,7 +3,7 @@ resource "aws_instance" "Test-Server2" {
   instance_type          = "t3.micro"
   availability_zone      = "us-east-1a"
   vpc_security_group_ids = [aws_security_group.my_sg1.id]
-  key_name               = "JenkiSerP1key.pem"
+  key_name               = "JenkinSerP1key.pem"
   tags = {
     name = "kubernetes_instance"
   }
