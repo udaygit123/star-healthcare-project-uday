@@ -1,9 +1,9 @@
 resource "aws_instance" "Test-Server2" {
-  ami                    = "ami-0e58f89e91723af4c"
-  instance_type          = "t2.medium"
+  ami                    = "ami-007855ac798b5175e"
+  instance_type          = "t3.micro"
   availability_zone      = "us-east-1a"
   vpc_security_group_ids = [aws_security_group.my_sg1.id]
-  key_name               = "JenkinSerP1key.pem"
+  key_name               = "JenkiSerP1key.pem"
   tags = {
     name = "kubernetes_instance"
   }
