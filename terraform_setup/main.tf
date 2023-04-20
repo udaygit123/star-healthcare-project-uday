@@ -1,7 +1,7 @@
 resource "aws_instance" "Test-Server2" {
   ami                    = "ami-0e58f89e91723af4c"
   instance_type          = "t2.medium"
-  availability_zone      = "us-east-1"
+  availability_zone      = "us-east-1a"
   vpc_security_group_ids = [aws_security_group.my_sg1.id]
   key_name               = "JenkinSerP1key.pem"
   tags = {
