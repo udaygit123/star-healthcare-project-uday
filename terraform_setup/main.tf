@@ -3,7 +3,7 @@ resource "aws_instance" "Test-Server2" {
   instance_type          = "t3.micro"
   availability_zone      = "us-east-1a"
   vpc_security_group_ids = [aws_security_group.my_sg1.id]
-  key_name               = "JenkinsP3.pem"
+  key_name               = "JenkinSerP1key.pem"
   tags = {
     name = "kubernetes_instance"
   }
@@ -24,7 +24,7 @@ resource "aws_instance" "Test-Server2" {
       type        = "ssh"
       host        = self.public_ip
       user        = "ubuntu"
-      private_key = file("./JenkinsP3.pem")
+      private_key = file("./JenkinSerP1key.pem")
     }
   }
 }
