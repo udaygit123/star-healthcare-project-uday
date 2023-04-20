@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "aws"
-      
+      verson  = "1.4.5"
     }
   }
 }
