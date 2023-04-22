@@ -27,7 +27,7 @@ pipeline {
             }
      stage('Docker Image Creation'){
         steps {
-           sh 'docker build -t udaydocker123/medicureproject:latest'
+           sh 'docker build -t udaydocker123/medicureproject:latest .'
                      }
                  }
     stage('Push Image to DockerHub'){
