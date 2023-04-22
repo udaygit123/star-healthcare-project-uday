@@ -7,7 +7,7 @@ pipeline {
         stage('checkout'){
            steps {
              echo 'checkout the code from GitRepo'
-             git branch: 'master', url: 'https://github.com/udaygit123/star-healthcare-project-uday.git'
+             git branch: 'master', url: 'https://github.com/udaygit123/Star-agile-MediCure-Project.git'
                     }
             }
 
