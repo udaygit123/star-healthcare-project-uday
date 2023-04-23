@@ -27,7 +27,7 @@ resource "aws_instance" "Test-Server2" {
       "sudo usermod -aG docker ubuntu",
      ]
      provisioner "local-exec" {
-     command = "ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml"
+     command = "ansiblePlaybook installation: 'ansible', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-playbook.yml"
    
   }
 }
