@@ -56,7 +56,7 @@ pipeline {
            sshagent(sshagent(['ubuntu']) {
    
 }
-          sh "scp -o StrictHostKeyChecking=no Deployment.yml ubuntu@ip-54.84.82.243:/home/ubuntu'
+          sh "scp -o StrictHostKeyChecking=no Deployment.yml ubuntu@ip-54.84.82.243:/home/ubuntu"
 
      script{
       try{
