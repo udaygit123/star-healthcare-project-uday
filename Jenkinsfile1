@@ -39,6 +39,7 @@ pipeline {
 
 	            }
                 }
+		}
            
       stage ('Configure Test-server2 with Terraform, Ansible and create minikube then Deploying'){
             steps {
@@ -53,8 +54,5 @@ pipeline {
             }
 	  }
 	  }
-	  
-	
-    }
-    }
+ }
     
