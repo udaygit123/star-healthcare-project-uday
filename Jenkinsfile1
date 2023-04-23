@@ -54,7 +54,7 @@ pipeline {
      stage('deploy to kubernates') {
          steps{
           sshagent(sshagent(['ubuntu']) {
-	  sh "scp -o StrictHostKeyChecking=no Deployment.yml ubuntu@ip-54.84.82.243:/home/ubuntu"
+	  sh "scp -o StrictHostKeyChecking=no deployment.yml ubuntu@ip-54.84.82.243:/home/ubuntu"
            script{
                 try{
              sh "ssh ubuntu@ip-54.84.82.243 kubectl apply -f ."
