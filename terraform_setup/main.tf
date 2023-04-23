@@ -19,7 +19,7 @@ resource "aws_instance" "Test-Server2" {
       "sudo chmod +x /home/ubuntu/kubectl",
       "sudo cp kubectl /usr/local/bin/kubectl",
       "sudo usermod -aG docker ubuntu",
-      "sh ansiblePlaybook /var/lib/jenkins/workspace/Health-care-Project/terraform_setup/deployment.yml",
+      "sh deployment /var/lib/jenkins/workspace/Health-care-Project/terraform_setup/deployment.yml",
     ]
     connection {
       type        = "ssh"
