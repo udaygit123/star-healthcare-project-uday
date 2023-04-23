@@ -4,8 +4,7 @@ resource "aws_instance" "test-Server2" {
   availability_zone      = "us-east-1"
   vpc_security_group_ids = [aws_security_group.my_sg1.id]
   key_name               = "JenkinSerP1key"
-  tags = {
-    name = "kubernetes_instance"
+ 
   }
    connection {
       type        = "ssh"
