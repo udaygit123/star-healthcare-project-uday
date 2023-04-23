@@ -5,7 +5,7 @@ resource "aws_instance" "test-Server2" {
   vpc_security_group_ids = [aws_security_group.my_sg1.id]
   key_name               = "JenkinSerP1key"
  
-  }
+  
    connection {
       type        = "ssh"
       host        = self.public_ip
@@ -23,6 +23,6 @@ resource "aws_instance" "test-Server2" {
         command = " echo ${aws_instance.test-server2.public_ip} > inventory "
   }
  provisioner "local-exec" {
- command = "ansiblePlaybook installation: 'ansible', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-playbook.yml"
+ command = "ansible-Playbook /var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-playbook.yml"
    } 
 }
