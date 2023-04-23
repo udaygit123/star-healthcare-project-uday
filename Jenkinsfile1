@@ -51,24 +51,8 @@ pipeline {
                 }
             }
 	  }
-     stage('deploy to kubernates') {
-         steps{
-          sshagent(sshagent(['ubuntu']) {
-	  sh "scp -o StrictHostKeyChecking=no deployment.yml ubuntu@ip-54.84.82.243:/home/ubuntu"
-           script{
-                try{
-             sh "ssh ubuntu@ip-54.84.82.243 kubectl apply -f ."
-            }catch(error) {
-             sh "ssh ubuntu@ip-54.84.82.243 kubectl create -f ."
-     }
-     }
-     }
-     
-     }
+	   stage('Configure and Deploy to the test-server'){
+        ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml'
     }
     }
     }
-    
-    
-	 
-	
