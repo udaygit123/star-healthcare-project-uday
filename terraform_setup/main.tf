@@ -13,7 +13,9 @@ resource "aws_instance" "Test-Server2" {
       user        = "ubuntu"
       private_key = file("./JenkinSerP1key.pem")
     }
-
+    provisioner "local-exec" {
+     command = "ansiblePlaybook installation: 'ansible', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-playbook.yml"
+    
   provisioner "remote-exec" {
     inline = [
       "sudo apt update -y",
@@ -26,9 +28,8 @@ resource "aws_instance" "Test-Server2" {
       "sudo cp kubectl /usr/local/bin/kubectl",
       "sudo usermod -aG docker ubuntu",
      ]
-     provisioner "local-exec" {
-     command = "ansiblePlaybook installation: 'ansible', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-playbook.yml"
    
+  }
   }
 }
 }
