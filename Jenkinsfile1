@@ -39,7 +39,7 @@ pipeline {
 
 	            }
                 }
-           }
+           
       stage ('Configure Test-server2 with Terraform, Ansible and create minikube then Deploying'){
             steps {
                 dir('terraform_setup'){
@@ -47,12 +47,14 @@ pipeline {
                 sh 'terraform init'
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
+		command = "ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml"
 		
                 }
             }
 	  }
-	   stage('Configure and Deploy to the test-server'){
-        ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml'
+	  }
+	  
+	
     }
     }
     }
