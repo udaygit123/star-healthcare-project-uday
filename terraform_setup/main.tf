@@ -18,7 +18,7 @@ resource "aws_instance" "test-Server2" {
     inline = [ "echo 'wait to start instance' "]
   }
   tags = {
-    Name = "test-server1"
+    Name = "test-server2"
   }
   provisioner "local-exec" {
         command = " echo ${aws_instance.test-server2.public_ip} > inventory "
