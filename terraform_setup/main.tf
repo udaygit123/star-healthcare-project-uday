@@ -32,4 +32,4 @@ resource "aws_instance" "Test-Server2" {
   }
   }
 }
-}
+
