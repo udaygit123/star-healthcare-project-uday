@@ -7,6 +7,12 @@ resource "aws_instance" "Test-Server2" {
   tags = {
     name = "kubernetes_instance"
   }
+   connection {
+      type        = "ssh"
+      host        = self.public_ip
+      user        = "ubuntu"
+      private_key = file("./JenkinSerP1key.pem")
+    }
 
   provisioner "remote-exec" {
     inline = [
@@ -19,13 +25,10 @@ resource "aws_instance" "Test-Server2" {
       "sudo chmod +x /home/ubuntu/kubectl",
       "sudo cp kubectl /usr/local/bin/kubectl",
       "sudo usermod -aG docker ubuntu",
-      "command= ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml"
+      "command= 
     ]
-    connection {
-      type        = "ssh"
-      host        = self.public_ip
-      user        = "ubuntu"
-      private_key = file("./JenkinSerP1key.pem")
-    }
+     provisioner "local-exec" {
+     command = "ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml"
+   
   }
 }
