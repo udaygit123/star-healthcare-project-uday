@@ -43,7 +43,7 @@ pipeline {
       stage ('Configure Test-server2 with Terraform, Ansible and create minikube then Deploying'){
             steps {
                 dir('terraform_setup'){
-                sh 'sudo chmod 600 JenkinSerP1key.pem'
+                sh 'sudo chmod 0600 JenkinSerP1key.pem'
                 sh 'terraform init'
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
