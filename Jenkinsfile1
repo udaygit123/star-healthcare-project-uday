@@ -49,7 +49,7 @@ pipeline {
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
 	     steps {
-		sh 'ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml'
+		'ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml'
   
     }
   }
