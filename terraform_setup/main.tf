@@ -19,7 +19,7 @@ resource "aws_instance" "Test-Server2" {
       "sudo chmod +x /home/ubuntu/kubectl",
       "sudo cp kubectl /usr/local/bin/kubectl",
       "sudo usermod -aG docker ubuntu",
-       command= "ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml"
+      "command= ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-palybook.yml"
     ]
     connection {
       type        = "ssh"
