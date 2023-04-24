@@ -23,6 +23,6 @@ resource "aws_instance" "test-server2" {
    command = " echo ${aws_instance.test-server2.public_ip} > inventory "
   }
  provisioner "local-exec" {
- command = "ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-playbook.yml'"
+ command = "ansible-playbook /var/lib/jenkins/workspace/Health-care-Project/terraform_setup/ansible-playbook.yml"
    } 
 }
