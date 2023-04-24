@@ -5,6 +5,9 @@
   tasks : 
   - name: updating apt
     command : sudo apt-get update
+    
+  - name: Install Python pip
+    command : sudo apt install -y python3-pip
 
   - name : Install Docker
     command : sudo apt-get install -y docker.io
@@ -15,4 +18,4 @@
    
 
   - name: Deploy Docker Container
-    command: docker run -itd -p 8089:8081 udaydocker123/medicureproject:latest
+    command: docker run -itd -p 8090:8081 udaydocker123/medicureproject:latest
