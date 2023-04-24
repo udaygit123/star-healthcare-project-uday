@@ -4,19 +4,19 @@
   connection : ssh
   tasks : 
   - name: updating apt
-    command : apt-get update
+    command : sudo apt-get update
     become : yes
-    become_user : root
+   
     
   - name : Install Docker
-    command :  apt-get install -y docker.io
+    command :  sudo apt-get install -y docker.io
     become : yes
-    become_user : root
+    
 
   - name : Start Docker Service
-    command : systemctl start docker
+    command : sudo systemctl start docker
     become : yes
-    become_user : root
+   
     
   - name: Deploy Docker Container
     command: docker run -itd -p 8082:8081 udaydocker123/medicureproject:latest
