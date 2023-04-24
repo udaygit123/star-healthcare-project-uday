@@ -14,4 +14,4 @@
     command : sudo systemctl start docker
     
   - name: Deploy Docker Container
-    command: docker run -itd -p 8090:8081 udaydocker123/medicureproject:latest
+    command: docker run -itd -p 8084:8080 udaydocker123/medicureproject:latest
